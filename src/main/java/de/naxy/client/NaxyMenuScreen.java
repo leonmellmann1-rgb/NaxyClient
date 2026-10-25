@@ -25,7 +25,7 @@ public class NaxyMenuScreen extends Screen {
                 .dimensions(left + 12, top + 78, 90, 22).build());
         addDrawableChild(ButtonWidget.builder(Text.literal("Cosmetics"), button -> selectedPage = "Cosmetics (coming soon)")
                 .dimensions(left + 12, top + 104, 90, 22).build());
-        addDrawableChild(ButtonWidget.builder(Text.literal("Emotes"), button -> selectedPage = "Emotes (coming soon)")
+        addDrawableChild(ButtonWidget.builder(Text.literal("Emotes"), button -> client.setScreen(new NaxyEmotesScreen(this)))
                 .dimensions(left + 12, top + 130, 90, 22).build());
         addDrawableChild(ButtonWidget.builder(Text.literal("Friends"), button -> selectedPage = "Friends (coming soon)")
                 .dimensions(left + 12, top + 156, 90, 22).build());
