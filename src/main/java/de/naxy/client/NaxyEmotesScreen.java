@@ -29,8 +29,20 @@ public class NaxyEmotesScreen extends Screen {
                 .dimensions(left + 18, top + 94, 120, 24).build());
         addDrawableChild(ButtonWidget.builder(Text.literal("Sit"), button -> select("Sit"))
                 .dimensions(left + 152, top + 94, 120, 24).build());
+        addDrawableChild(ButtonWidget.builder(Text.literal("Play selected (test)"), button -> playSelected())
+                .dimensions(left + 18, top + 155, 180, 22).build());
         addDrawableChild(ButtonWidget.builder(Text.literal("Back"), button -> client.setScreen(parent))
-                .dimensions(left + 80, top + 155, 130, 22).build());
+                .dimensions(left + 204, top + 155, 68, 22).build());
+    }
+
+    private void playSelected() {
+        if (client == null || client.player == null) {
+            return;
+        }
+        // First real in-game test: use Minecraft's vanilla arm swing.
+        // Custom full-body poses will be implemented separately.
+        client.player.swingHand(net.minecraft.util.Hand.MAIN_HAND);
+        client.setScreen(null);
     }
 
     private void select(String emote) {
@@ -90,7 +102,7 @@ public class NaxyEmotesScreen extends Screen {
 
         context.drawTextWithShadow(textRenderer, Text.literal("Selected: " + selectedEmote), left + 18, top + 137, ACCENT);
         context.drawTextWithShadow(textRenderer, Text.literal("Animated preview • client-side only"), left + 18, top + 153, 0xFFB9C0D4);
-        context.drawTextWithShadow(textRenderer, Text.literal("Real player animation comes next."), left + 18, top + 171, 0xFFB9C0D4);
+        context.drawTextWithShadow(textRenderer, Text.literal("Play test uses vanilla arm swing"), left + 18, top + 171, 0xFFB9C0D4);
         super.render(context, mouseX, mouseY, delta);
     }
 
