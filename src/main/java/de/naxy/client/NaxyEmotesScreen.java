@@ -10,6 +10,7 @@ public class NaxyEmotesScreen extends Screen {
     private String selectedEmote = "Wave";
     private static final int ACCENT = 0xFF6688FF;
     private long previewStart = System.currentTimeMillis();
+    private String statusMessage = "Choose an emote to preview it.";
 
     public NaxyEmotesScreen(Screen parent) {
         super(Text.literal("NAXY Emotes"));
@@ -37,17 +38,24 @@ public class NaxyEmotesScreen extends Screen {
 
     private void playSelected() {
         if (client == null || client.player == null) {
+            statusMessage = "Join a world first.";
             return;
         }
-        // First real in-game test: use Minecraft's vanilla arm swing.
-        // Custom full-body poses will be implemented separately.
+        if (!selectedEmote.equals("Wave")) {
+            statusMessage = selectedEmote + " is preview-only for now.";
+            return;
+        }
+        // First in-game playback test: Minecraft's vanilla arm swing.
+        // A custom full-body wave pose is a separate next step.
         client.player.swingHand(net.minecraft.util.Hand.MAIN_HAND);
+        statusMessage = "Wave test played using the vanilla arm swing.";
         client.setScreen(null);
     }
 
     private void select(String emote) {
         selectedEmote = emote;
         previewStart = System.currentTimeMillis();
+        statusMessage = emote + " selected."; 
     }
 
     @Override
@@ -102,7 +110,7 @@ public class NaxyEmotesScreen extends Screen {
 
         context.drawTextWithShadow(textRenderer, Text.literal("Selected: " + selectedEmote), left + 18, top + 137, ACCENT);
         context.drawTextWithShadow(textRenderer, Text.literal("Animated preview • client-side only"), left + 18, top + 153, 0xFFB9C0D4);
-        context.drawTextWithShadow(textRenderer, Text.literal("Play test uses vanilla arm swing"), left + 18, top + 171, 0xFFB9C0D4);
+        context.drawTextWithShadow(textRenderer, Text.literal(statusMessage), left + 18, top + 171, 0xFFB9C0D4);
         super.render(context, mouseX, mouseY, delta);
     }
 
