@@ -1,4 +1,3 @@
-
 name: Build NAXY Client
 
 on:
@@ -23,6 +22,8 @@ jobs:
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
 
       - name: Build NAXY
         run: gradle build
