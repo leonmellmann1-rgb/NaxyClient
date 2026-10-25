@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "de.naxy.client.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "PlayerEntityModelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
