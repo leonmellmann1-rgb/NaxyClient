@@ -17,6 +17,7 @@ public abstract class PlayerEntityModelMixin {
 
     @Inject(method = "setAngles", at = @At("TAIL"))
     private void naxy$animateEmote(PlayerEntityRenderState state, CallbackInfo ci) {
+        if (!(state instanceof NaxyEmoteRenderState naxyState) || !naxyState.naxy$isLocalPlayer()) return;
         if (!NaxyEmoteAnimation.isPlaying()) return;
 
         float t = (System.currentTimeMillis() - NaxyEmoteAnimation.startedAtMillis) / 1000.0F;
