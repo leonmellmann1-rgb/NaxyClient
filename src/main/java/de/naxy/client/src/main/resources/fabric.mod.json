@@ -1,0 +1,19 @@
+
+{
+  "schemaVersion": 1,
+  "id": "naxy",
+  "version": "1.0.0",
+  "name": "NAXY Client",
+  "description": "A custom Minecraft client with its own GUI, cosmetics and social features.",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "de.naxy.client.NaxyClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21"
+  }
+}
