@@ -41,14 +41,13 @@ public class NaxyEmotesScreen extends Screen {
             statusMessage = "Join a world first.";
             return;
         }
-        if (!selectedEmote.equals("Wave")) {
-            statusMessage = selectedEmote + " is preview-only for now.";
+        if (selectedEmote.equals("Sit")) {
+            statusMessage = "Sit is still preview-only.";
             return;
         }
-        // First in-game playback test: Minecraft's vanilla arm swing.
-        // A custom full-body wave pose is a separate next step.
-        client.player.swingHand(net.minecraft.util.Hand.MAIN_HAND);
-        statusMessage = "Wave test played using the vanilla arm swing.";
+
+        NaxyEmoteAnimation.play(selectedEmote);
+        statusMessage = selectedEmote + " animation started.";
         client.setScreen(null);
     }
 
