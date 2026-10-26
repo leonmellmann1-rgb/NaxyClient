@@ -54,7 +54,9 @@ public class NaxyEmotesScreen extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context, mouseX, mouseY, delta);
+        // Avoid Minecraft's background blur: it may only run once per frame,
+        // and the parent NAXY menu already rendered its blur in this frame.
+        context.fill(0, 0, this.width, this.height, 0xA0000000);
         int left = this.width / 2 - 165;
         int top = this.height / 2 - 105;
         context.fill(left, top, left + 330, top + 210, 0xF0141724);
