@@ -38,7 +38,10 @@ public class NaxyMenuScreen extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context, mouseX, mouseY, delta);
+        // Draw a simple dim overlay instead of Screen's blur background.
+        // Minecraft 1.21.11 can throw if the blur pass is invoked twice in one frame.
+        context.fill(0, 0, this.width, this.height, 0xA0000000);
+
         int panelWidth = 320;
         int panelHeight = 225;
         int left = (this.width - panelWidth) / 2;
