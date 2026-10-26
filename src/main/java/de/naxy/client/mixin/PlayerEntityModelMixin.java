@@ -1,6 +1,7 @@
 package de.naxy.client.mixin;
 
 import de.naxy.client.NaxyEmoteAnimation;
+import de.naxy.client.NaxyEmoteRenderState;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.state.BipedEntityRenderState;
