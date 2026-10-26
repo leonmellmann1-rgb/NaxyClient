@@ -17,6 +17,6 @@ public abstract class ScreenBrandingMixin {
         int bottom = screen.height - 8;
         context.fill(right - 112, bottom - 15, right, bottom + 2, 0xB0141724);
         context.fill(right - 112, bottom - 15, right - 109, bottom + 2, 0xFF6688FF);
-        context.drawTextWithShadow(screen.getTextRenderer(), Text.literal("NAXY CLIENT"), right - 103, bottom - 11, 0xFFFFFFFF);
+        context.drawTextWithShadow(net.minecraft.client.MinecraftClient.getInstance().textRenderer, Text.literal("NAXY CLIENT"), right - 103, bottom - 11, 0xFFFFFFFF);
     }
 }
