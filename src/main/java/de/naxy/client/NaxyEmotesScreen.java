@@ -41,11 +41,6 @@ public class NaxyEmotesScreen extends Screen {
             statusMessage = "Join a world first.";
             return;
         }
-        if (selectedEmote.equals("Sit")) {
-            statusMessage = "Sit is still preview-only.";
-            return;
-        }
-
         NaxyEmoteAnimation.play(selectedEmote);
         statusMessage = selectedEmote + " animation started.";
         client.setScreen(null);
