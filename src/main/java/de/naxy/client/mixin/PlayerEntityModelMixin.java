@@ -55,15 +55,15 @@ public abstract class PlayerEntityModelMixin {
             leftLeg.yaw = -beat * 0.16F;
         } else if ("Sit".equals(emote)) {
             // Fold both legs forward while keeping the model's normal pivot.
-            body.pitch = -0.12F;
+            body.pitch = 0.18F;
 
             rightArm.pitch = -0.22F;
             leftArm.pitch = -0.22F;
             rightArm.roll = 0.08F;
             leftArm.roll = -0.08F;
 
-            rightLeg.pitch = -1.35F;
-            leftLeg.pitch = -1.35F;
+            rightLeg.pitch = -1.85F;
+            leftLeg.pitch = -1.85F;
             rightLeg.yaw = 0.32F;
             leftLeg.yaw = -0.32F;
             rightLeg.roll = 0.04F;
