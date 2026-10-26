@@ -5,7 +5,9 @@
   "client": [
     "PlayerEntityRenderStateMixin",
     "PlayerEntityRendererMixin",
-    "PlayerEntityModelMixin"
+    "PlayerEntityModelMixin",
+    "ScreenBrandingMixin",
+    "SplashOverlayBrandingMixin"
   ],
   "injectors": {
     "defaultRequire": 1
