@@ -1,5 +1,6 @@
 package de.naxy.client.mixin;
 
+import de.naxy.client.NaxyEmoteRenderState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
