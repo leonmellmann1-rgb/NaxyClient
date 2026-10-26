@@ -16,7 +16,13 @@ public final class NaxyEmoteAnimation {
 
     public static boolean isPlaying() {
         if (activeEmote.isEmpty()) return false;
-        if (System.currentTimeMillis() - startedAtMillis > 1800L) {
+        long duration = switch (activeEmote) {
+            case "Sit" -> 6000L;
+            case "Dance" -> 4000L;
+            case "Cheer" -> 2500L;
+            default -> 1800L;
+        };
+        if (System.currentTimeMillis() - startedAtMillis > duration) {
             activeEmote = "";
             return false;
         }
