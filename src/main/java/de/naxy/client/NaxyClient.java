@@ -26,6 +26,18 @@ public class NaxyClient implements ClientModInitializer {
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if ("Sit".equals(NaxyEmoteAnimation.activeEmote) && client.player != null) {
+                // Ignore vertical velocity (falling/jumping); only stop sitting for actual movement.
+                var velocity = client.player.getVelocity();
+                boolean moving = Math.abs(velocity.x) > 0.04 || Math.abs(velocity.z) > 0.04
+                        || client.options.forwardKey.isPressed()
+                        || client.options.backKey.isPressed()
+                        || client.options.leftKey.isPressed()
+                        || client.options.rightKey.isPressed()
+                        || client.options.jumpKey.isPressed();
+                if (moving) NaxyEmoteAnimation.stop();
+            }
+
             while (openMenuKey.wasPressed()) {
                 if (client.currentScreen == null) {
                     client.setScreen(new NaxyMenuScreen());
