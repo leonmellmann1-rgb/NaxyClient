@@ -56,7 +56,6 @@ public abstract class PlayerEntityModelMixin {
         } else if ("Sit".equals(emote)) {
             // Lower the torso and fold the legs so the pose reads as a seated position.
             body.pitch = 0.22F;
-            body.pivotY += 3.0F;
             rightArm.pitch = -0.18F;
             leftArm.pitch = -0.18F;
             rightLeg.pitch = -1.75F;
