@@ -32,21 +32,37 @@ public abstract class PlayerEntityModelMixin {
             rightArm.pitch = -2.6F + (float) Math.sin(t * 12.0F) * 0.35F;
             rightArm.yaw = -0.25F + (float) Math.sin(t * 12.0F) * 0.25F;
         } else if ("Cheer".equals(emote)) {
-            rightArm.pitch = -3.0F;
-            leftArm.pitch = -3.0F;
+            float pump = (float) Math.sin(t * 9.0F) * 0.28F;
+            rightArm.pitch = -3.05F + pump;
+            leftArm.pitch = -3.05F - pump;
+            rightArm.roll = -0.22F + (float) Math.sin(t * 9.0F) * 0.18F;
+            leftArm.roll = 0.22F - (float) Math.sin(t * 9.0F) * 0.18F;
+            body.pitch = (float) Math.sin(t * 9.0F) * 0.08F;
         } else if ("Dance".equals(emote)) {
-            rightArm.pitch = -1.0F + (float) Math.sin(t * 10.0F) * 0.8F;
-            leftArm.pitch = -1.0F - (float) Math.sin(t * 10.0F) * 0.8F;
-            rightArm.roll = (float) Math.sin(t * 10.0F) * 0.25F;
-            leftArm.roll = -(float) Math.sin(t * 10.0F) * 0.25F;
+            float beat = (float) Math.sin(t * 8.5F);
+            float fastBeat = (float) Math.sin(t * 17.0F);
+            rightArm.pitch = -1.25F + beat * 1.15F;
+            leftArm.pitch = -1.25F - beat * 1.15F;
+            rightArm.yaw = -0.35F + fastBeat * 0.35F;
+            leftArm.yaw = 0.35F - fastBeat * 0.35F;
+            rightArm.roll = 0.25F + beat * 0.3F;
+            leftArm.roll = -0.25F - beat * 0.3F;
+            body.yaw = beat * 0.38F;
+            body.pitch = (float) Math.sin(t * 17.0F) * 0.12F;
+            rightLeg.pitch = fastBeat * 0.45F;
+            leftLeg.pitch = -fastBeat * 0.45F;
+            rightLeg.yaw = beat * 0.16F;
+            leftLeg.yaw = -beat * 0.16F;
         } else if ("Sit".equals(emote)) {
-            body.pitch = -0.18F;
-            rightArm.pitch = -0.25F;
-            leftArm.pitch = -0.25F;
-            rightLeg.pitch = -1.35F;
-            leftLeg.pitch = -1.35F;
-            rightLeg.yaw = 0.18F;
-            leftLeg.yaw = -0.18F;
+            // Lower the torso and fold the legs so the pose reads as a seated position.
+            body.pitch = 0.22F;
+            body.pivotY += 3.0F;
+            rightArm.pitch = -0.18F;
+            leftArm.pitch = -0.18F;
+            rightLeg.pitch = -1.75F;
+            leftLeg.pitch = -1.75F;
+            rightLeg.yaw = 0.12F;
+            leftLeg.yaw = -0.12F;
         }
     }
 }
