@@ -54,14 +54,22 @@ public abstract class PlayerEntityModelMixin {
             rightLeg.yaw = beat * 0.16F;
             leftLeg.yaw = -beat * 0.16F;
         } else if ("Sit".equals(emote)) {
-            // Lower the torso and fold the legs so the pose reads as a seated position.
-            body.pitch = 0.22F;
-            rightArm.pitch = -0.18F;
-            leftArm.pitch = -0.18F;
-            rightLeg.pitch = -1.75F;
-            leftLeg.pitch = -1.75F;
-            rightLeg.yaw = 0.12F;
-            leftLeg.yaw = -0.12F;
+            // Shift the torso down and fold both legs forward into a seated pose.
+            // setPivot replaces the pivot instead of accumulating movement every frame.
+            body.setPivot(0.0F, 15.0F, 0.0F);
+            body.pitch = -0.12F;
+
+            rightArm.pitch = -0.22F;
+            leftArm.pitch = -0.22F;
+            rightArm.roll = 0.08F;
+            leftArm.roll = -0.08F;
+
+            rightLeg.pitch = -1.35F;
+            leftLeg.pitch = -1.35F;
+            rightLeg.yaw = 0.32F;
+            leftLeg.yaw = -0.32F;
+            rightLeg.roll = 0.04F;
+            leftLeg.roll = -0.04F;
         }
     }
 }
