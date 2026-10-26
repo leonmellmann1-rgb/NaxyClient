@@ -54,9 +54,7 @@ public abstract class PlayerEntityModelMixin {
             rightLeg.yaw = beat * 0.16F;
             leftLeg.yaw = -beat * 0.16F;
         } else if ("Sit".equals(emote)) {
-            // Shift the torso down and fold both legs forward into a seated pose.
-            // setPivot replaces the pivot instead of accumulating movement every frame.
-            body.setPivot(0.0F, 15.0F, 0.0F);
+            // Fold both legs forward while keeping the model's normal pivot.
             body.pitch = -0.12F;
 
             rightArm.pitch = -0.22F;
