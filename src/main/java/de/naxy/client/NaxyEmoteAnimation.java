@@ -14,12 +14,18 @@ public final class NaxyEmoteAnimation {
         startedAtMillis = System.currentTimeMillis();
     }
 
+    public static void stop() {
+        activeEmote = "";
+    }
+
     public static boolean isPlaying() {
         if (activeEmote.isEmpty()) return false;
+        // Sitting continues until the player starts moving.
+        if ("Sit".equals(activeEmote)) return true;
+
         long duration = switch (activeEmote) {
-            case "Sit" -> 6000L;
-            case "Dance" -> 4000L;
-            case "Cheer" -> 2500L;
+            case "Dance" -> 7000L;
+            case "Cheer" -> 3500L;
             default -> 1800L;
         };
         if (System.currentTimeMillis() - startedAtMillis > duration) {
